@@ -3,7 +3,7 @@ import PopUp from "./popUp"
 import Background from "../assets/backgroung.jpg"
 
 
-export default function Images({ dltImage, imag, setInput, input, onClick, loading, errors}) {
+export default function Images({ setPages, dltImage, imag, setInput, input, onClick, loading, errors}) {
 
        async function handlDownload(url, id) {
         try {
@@ -86,8 +86,13 @@ export default function Images({ dltImage, imag, setInput, input, onClick, loadi
                     onClick={() => dltImage(item.id)}
                     >X</button>
                   </div>
-                </div>
-            })}
+                </div>               
+           })}
+           {imag.length >= 0 && <button 
+           className="show_more"
+           onClick={setPages}
+           >Show More
+           </button>}
           </div> }
           
        </div>

@@ -7,6 +7,7 @@ function App() {
   const [query, setQuery] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     const storedImg = localStorage.getItem("searchImage")
@@ -24,19 +25,20 @@ function App() {
   }, [imageUrl])
 
   const fetchData = async () => {
+    if (!query.trim()) return
+
     setLoading(true)
     setError(null)
+    setPage(prev => prev + 1)
 
      try {
       const resp = 
       await fetch(
-        `https://api.unsplash.com/search/photos?query=${query}&client_id=${ACCESS_KEY}`
+        `https://api.unsplash.com/search/photos?query=${query}&page=${page}&per_page=2&client_id=${ACCESS_KEY}`
       )
 
       const data = await resp.json()
       setImageUrl(prev => [...prev, ...data.results])
-      console.log(data)
-      console.log(imageUrl.results)
       } catch {
         setError("Faild To Fetch Data.")
       }finally {
@@ -51,6 +53,11 @@ function App() {
         )
     }
 
+    const addPages = () => {
+      setPage(prev => prev + 1)
+      fetchData()
+    }
+
   return (
     <>
      <Images
@@ -61,6 +68,7 @@ function App() {
       onClick={fetchData}
       loading={loading}
       errors={error}
+      setPages={addPages}
     />
     </>
   )

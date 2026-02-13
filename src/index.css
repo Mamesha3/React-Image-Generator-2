@@ -9,6 +9,7 @@ body {
 }
 button {
   cursor: pointer;
+  user-select: none;
 }
 .image_inputs {
   margin: auto;
@@ -131,6 +132,24 @@ button {
     from{opacity: .4; transform: scale(1.1);}
     from{opacity: .4; transform: scale(1);}
   }
+  .show_more {
+    text-align: center;
+    border: none;
+    width: 150px;
+    height: 35px;
+    padding: .4rem .6rem;
+    border-radius: .3rem;
+    font-weight: 600;
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+    margin: auto;
+    margin-block: 1rem .3rem;
+  }
+  .show_more:active {
+    transform: scale(.98);
+  }
+
 @media (max-width: 570px) {
    .display_container {
      width: 450px;
