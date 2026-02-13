@@ -1,16 +1,33 @@
+import { useState } from "react"
 import Imgs from "../assets/react.svg"
 
 export default function PopUp({ closeDis, passedImg, download }) {
+    const [isDescribe, setIsDescribe] = useState(false)
+    const [text, setText] = useState('')
+
+    const getDiscribe = (value) => {
+        setIsDescribe(true)
+        setText(value)
+    }
     return (
         <div className="display_container">
             <div className="display_image">
-                <img src={passedImg.img} alt={passedImg.alts} key={passedImg.id}/>
+                {isDescribe ? 
+                 <div className="discribe" onClick={() => setIsDescribe(false)}>
+                    <p>{text}</p>
+                 </div>
+                :
+                <img 
+                onClick={() => getDiscribe(passedImg.alts)}
+                src={passedImg.img} 
+                alt={passedImg.alts} 
+                key={passedImg.id}/>}
             </div>
             <div className="buttons">
-                <button className="downlod"
+                {!isDescribe ? <button className="downlod"
                 onClick={() => download(passedImg.img, passedImg.id)}
                 >Download
-                </button>
+                </button> : null}
                 <span><strong>{passedImg.name}</strong></span>
                 <button
                 onClick={closeDis}
