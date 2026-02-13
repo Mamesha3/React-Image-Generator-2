@@ -1,5 +1,7 @@
 import { useState } from "react"
 import PopUp from "./popUp"
+import Background from "../assets/backgroung.jpg"
+
 
 export default function Images({ dltImage, imag, setInput, input, onClick, loading, errors}) {
 
@@ -40,7 +42,6 @@ export default function Images({ dltImage, imag, setInput, input, onClick, loadi
       setAddClass("")
     }
 
-    console.log(passedImg)
     return (
       <>
        <div className="image_container">
@@ -56,7 +57,12 @@ export default function Images({ dltImage, imag, setInput, input, onClick, loadi
           </div>
           {loading && <p>Loading...</p>}
           {errors && <p>{errors}</p>}
-          <div className="images">
+          {imag.length === 0 ? 
+           <div className="empty">
+             <img src={Background} alt="" />
+             <p>Empty <strong>Images </strong>here...</p>
+           </div>
+          : <div className="images">
             {isPass && <PopUp 
             closeDis={closeDisplay}
             passedImg={passedImg}
@@ -82,7 +88,7 @@ export default function Images({ dltImage, imag, setInput, input, onClick, loadi
                   </div>
                 </div>
             })}
-          </div>
+          </div> }
           
        </div>
       </>

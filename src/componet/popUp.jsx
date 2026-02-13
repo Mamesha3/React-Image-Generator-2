@@ -1,5 +1,4 @@
 import { useState } from "react"
-import Imgs from "../assets/react.svg"
 
 export default function PopUp({ closeDis, passedImg, download }) {
     const [isDescribe, setIsDescribe] = useState(false)

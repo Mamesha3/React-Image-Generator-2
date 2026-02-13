@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import Images from "./componet/images"
-import PopUp from "./componet/popUp"
 
 function App() {
   const ACCESS_KEY = import.meta.env.VITE_UNSPLASH_KEY
