@@ -1,0 +1,120 @@
+body {
+  overflow-x: hidden;
+}
+.image_container {
+  width: 650px;
+  margin: auto;
+  background-color: aliceblue;
+  padding: .4rem 1rem;
+}
+button {
+  cursor: pointer;
+}
+.image_inputs {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.image_inputs > input {
+  border: none;
+  padding: .4rem .6rem;
+  border-radius: .3rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
+  width: 250px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.image_inputs > input:focus {
+  outline: lightgreen 2px solid;
+}
+.image_inputs > button, .buttons > button {
+  padding: .4rem .6rem;
+  border: none;
+  outline: none;
+  border-radius: .3rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
+  font-weight: 600;
+}
+.image_inputs > button:active, .buttons > button:active {
+  transform: scale(.98);
+}
+.images {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-block: 1rem;
+  position: relative;
+}
+.image {
+  width: 210px;
+  height: 210px;
+  margin-block: 1rem;
+}
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.containe {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ }
+ .display_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all .4s ease;
+  width: 550px;
+  height: 300px;
+  background-color: white;
+  z-index: 15;
+  border-radius: .6rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
+ }
+ .display_image {
+  width: 100%;
+  height: 85%;
+ }
+ .blurs {
+   pointer-events: none;
+   opacity: .5;
+ }
+  .display_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .buttons > button:first-child {
+    background-color: lightgreen;
+    color: black;
+  }
+  .buttons > button:last-child {
+    background-color: brown;
+    color: white;
+  }
+@media (max-width: 570px) {
+   .display_container {
+     width: 450px;
+     height: 300px;
+   }
+  .image_container {
+    width: 97%;
+  }
+  .images {
+    grid-template-columns: 1fr 1fr;
+  }
+  .image {
+    width: 205px;
+  }
+}
